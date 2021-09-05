@@ -47,7 +47,7 @@ export default function Home({ movies }: IHomeProps) {
   function RenderMovie() {
     return (
       <div className="flex flex-col justify-center items-center">
-        <h1 className="text-4xl text-white">
+        <h1 className="text-4xl text-white text-center">
           {movies[movieIndex].properties.Name.title[0].plain_text}
         </h1>
 
@@ -59,7 +59,7 @@ export default function Home({ movies }: IHomeProps) {
         </div>
         <div className="mt-4">
           <h2 className="text-xl text-white text-center">Plataforma(s):</h2>
-          <div className="mt-2">
+          <div className="flex flex-col justify-center items-center mt-2">
             <ul className="flex flex-row justify-center items-center">
               {movies[movieIndex].properties.Netflix.checkbox && (
                 <li className="m-2 flex flex-col justify-center items-center">
