@@ -1,34 +1,91 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+   <img src="https://raw.githubusercontent.com/tavareshenrique/randovie/main/public/logo.png" alt="Randovie" width="280"/>
+   <h3>Randovie</h3>
+</div>
 
-## Getting Started
+<p align="center">
+   <a href="https://www.linkedin.com/in/tavareshenrique/">
+      <img alt="Henrique Tavares" src="https://img.shields.io/badge/-Henrique Tavares-FB531A?style=flat&logo=Linkedin&logoColor=white" />
+   </a>
 
-First, run the development server:
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-FB531A">
+</p>
+
+> <b>randovie</b> is a simple project using the Notion API to randomly draw a movie for me to watch.
+
+<div align="center">
+  <sub><strong>randovie</strong> was developed with ❤︎ by
+    <a href="https://github.com/tavareshenrique">Henrique Tavares</a>
+  </sub>
+</div>
+
+# :pushpin: Content
+
+- [Technologies](#computer-technologies)
+- [Running](#construction_worker-running)
+- [Author](#computer-author)
+- [License](#closed_book-license)
+
+# :computer: Tecnologias
+
+This project was made using the following technologies:
+
+- [React](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [NextJS](https://nextjs.org/)
+- [Notion JS SDK API](https://github.com/makenotion/notion-sdk-js)
+- [TailwindCSS](https://tailwindcss.com/)'
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+
+# :construction_worker: Running
 
 ```bash
-npm run dev
-# or
-yarn dev
+# Clone the Repository
+git@github.com:tavareshenrique/randovie.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+# Create an .env file based on the env.example file and set the environment variables.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# Your Token.
+NOTION_TOKEN=
+# Your page ID you want to access.
+NOTION_DATABASE_ID=
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```bash
+# Download dependencies
+$ yarn
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+# Run
+$ yarn dev
+```
 
-## Learn More
+Go to <http://localhost:3000> to see the result.
 
-To learn more about Next.js, take a look at the following resources:
+# :computer: Author
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<table>
+   <tr>
+      <td align="center">
+         <a href="http://github.com/tavareshenrique/">
+            <img src="https://avatars1.githubusercontent.com/u/27022914?v=4" width="100px;" alt="Henrique Tavares"/>
+            <br />
+            <sub>
+               <b>Henrique Tavares</b>
+            </sub>
+          </a>
+          <br />
+          <a href="https://www.linkedin.com/in/tavareshenrique/" title="Linkedin">@tavareshenrique</a>
+          <br />
+          <a href="https://github.com/tavareshenrique/fastfeet-api/commits?author=tavareshenrique" title="Code">💻</a>
+      </td>
+   </tr>
+</table>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# :closed_book: License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is under the license [MIT](./LICENSE).
