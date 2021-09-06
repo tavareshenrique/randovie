@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 
 import { GetServerSideProps } from 'next';
-import Image from 'next/image';
 
 import notion from '../services/notion';
+
+import PlatformsList from '../components/PlatformsList';
 
 import netflixImg from '../../public/netflix.png';
 import disneyImg from '../../public/disney.png';
@@ -61,88 +62,46 @@ export default function Home({ movies }: IHomeProps) {
           <h2 className="text-xl text-white text-center">Plataforma(s):</h2>
           <div className="flex flex-col justify-center items-center mt-2">
             <ul className="flex flex-row justify-center items-center">
-              {movies[movieIndex].properties.Netflix.checkbox && (
-                <li className="m-2 flex flex-col justify-center items-center">
-                  <Image
-                    src={netflixImg}
-                    alt="Netflix"
-                    height="104"
-                    width="104"
-                    className="rounded-2xl"
-                  />
-                  <span className="text-white">Netflix</span>
-                </li>
-              )}
-
-              {movies[movieIndex].properties.Prime.checkbox && (
-                <li className="m-2 flex flex-col justify-center items-center">
-                  <Image
-                    src={primeImg}
-                    alt="Prime Video"
-                    height="104"
-                    width="104"
-                    className="rounded-2xl"
-                  />
-                  <span className="text-white">Prime Video</span>
-                </li>
-              )}
-
-              {movies[movieIndex].properties['Disney+'].checkbox && (
-                <li className="m-2 flex flex-col justify-center items-center">
-                  <Image
-                    src={disneyImg}
-                    alt="Disney+"
-                    height="104"
-                    width="104"
-                    className="rounded-2xl"
-                  />
-                  <span className="text-white">Disney+</span>
-                </li>
-              )}
-
-              {movies[movieIndex].properties['HBO Max'].checkbox && (
-                <li className="m-2 flex flex-col justify-center items-center">
-                  <Image
-                    src={hboImg}
-                    alt="HBO Max"
-                    height="104"
-                    width="104"
-                    className="rounded-2xl"
-                  />
-                  <span className="text-white">HBO Max</span>
-                </li>
-              )}
-
-              {movies[movieIndex].properties['Paramount+'].checkbox && (
-                <li className="m-2 flex flex-col justify-center items-center">
-                  <Image
-                    src={paramountImg}
-                    alt="Paramount+"
-                    height="96"
-                    width="96"
-                    className="rounded-2xl"
-                  />
-                  <span className="text-white mt-2">Paramount+</span>
-                </li>
-              )}
-
-              {movies[movieIndex].properties['AppleTV+'].checkbox && (
-                <li className="m-2 mt-4 flex flex-col justify-center items-center">
-                  <Image
-                    src={appleImg}
-                    alt="Apple TV+"
-                    height="96"
-                    width="96"
-                    className="rounded-2xl"
-                  />
-                  <span className="text-white">Apple TV+</span>
-                </li>
-              )}
+              <PlatformsList
+                image={netflixImg}
+                isVisible={movies[movieIndex].properties.Netflix.checkbox}
+                title="Netflix"
+              />
+              <PlatformsList
+                image={primeImg}
+                isVisible={movies[movieIndex].properties.Prime.checkbox}
+                title="Prime Video"
+              />
+              <PlatformsList
+                image={disneyImg}
+                isVisible={movies[movieIndex].properties['Disney+'].checkbox}
+                title="Disney+"
+              />
+              <PlatformsList
+                image={hboImg}
+                isVisible={movies[movieIndex].properties['HBO Max'].checkbox}
+                title="HBO Max"
+              />
+              <PlatformsList
+                image={paramountImg}
+                isVisible={movies[movieIndex].properties['Paramount+'].checkbox}
+                title="Paramount+"
+                height="96"
+                width="96"
+              />
+              <PlatformsList
+                image={appleImg}
+                isVisible={movies[movieIndex].properties['AppleTV+'].checkbox}
+                title="Apple TV+"
+                height="96"
+                width="96"
+              />
 
               {noPlatform() && (
-                <li className="m-2 mt-4 flex flex-col justify-center items-center">
-                  <span className="text-white">Não disponível</span>
-                </li>
+                <PlatformsList
+                  isVisible
+                  noPlatform
+                />
               )}
             </ul>
             <button
