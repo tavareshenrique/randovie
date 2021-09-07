@@ -26,7 +26,7 @@
 - [Author](#computer-author)
 - [License](#closed_book-license)
 
-# :computer: Tecnologias
+# :computer: Technologies
 
 This project was made using the following technologies:
 
