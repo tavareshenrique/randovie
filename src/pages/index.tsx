@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 
-import { BrowserView, isBrowser } from 'react-device-detect';
+import { BrowserView } from 'react-device-detect';
 
 import notion from '../services/notion';
 
