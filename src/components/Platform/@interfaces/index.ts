@@ -1,7 +1,5 @@
-import { MovieType } from '../../../@types/pages/Home/Movies';
+import { PlatformType } from '../../../@types/pages/Home/Movies';
 
 export interface IPlatformProps {
-  movies: MovieType[];
-  movieIndex: number;
-  handleMovie: () => void;
+  platforms: PlatformType[]
 }

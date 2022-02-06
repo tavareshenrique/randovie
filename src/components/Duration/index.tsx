@@ -1,11 +1,11 @@
 import { IDurationProps } from './@interfaces';
 
-export default function Duration({ movies, movieIndex }: IDurationProps) {
+export default function Duration({ duration }: IDurationProps) {
   return (
-    <div className="flex flex-row justify-center items-center mt-4">
+    <div className="flex flex-row justify-center items-center mt-4 ml-8">
       <p className="text-white text-lg">Duração</p>
       <p className="text-white ml-2 text-lg">
-        {movies[movieIndex].properties.Duração.rich_text[0].plain_text}
+        {duration}
       </p>
     </div>
   );

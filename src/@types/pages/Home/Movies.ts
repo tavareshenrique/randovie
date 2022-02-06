@@ -1,8 +1,12 @@
-import { PropertiesType } from './PropertiesType';
+export type PlatformType = {
+  id: string;
+  name: string;
+  color: string;
+}
 
 export type MovieType = {
-  id: string;
-  // cover: null,
-  properties: PropertiesType;
-  url: string;
+  title: string;
+  cover: string;
+  platforms: PlatformType[],
+  duration: string;
 };
