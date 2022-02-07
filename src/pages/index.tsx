@@ -44,8 +44,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const randomMovie = response.results[randomNumber] as unknown as IMovie;
 
-  console.log('randomMovie', randomMovie);
-
   const movie = {
     title: randomMovie.properties.Name.title[0].plain_text,
     cover: randomMovie.cover.external.url,
