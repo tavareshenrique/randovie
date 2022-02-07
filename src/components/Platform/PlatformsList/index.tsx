@@ -34,18 +34,18 @@ export default function PlatformsList({
           <Image
             src={platformToShow[name]}
             alt={name}
-            height="104"
-            width="104"
+            height="64"
+            width="64"
             className="rounded-2xl"
           />
-          <span className="text-white">{name}</span>
+          <span className="text-white text-sm">{name}</span>
         </li>
       );
     }
 
     return (
       <li className={`${styles.platform__list} mt-4`}>
-        <span className="text-white">Não disponível</span>
+        <span className="text-red-800">Não disponível</span>
       </li>
     );
   }

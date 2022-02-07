@@ -2,7 +2,7 @@ import { ICoverProps } from './@interfaces';
 
 function Cover({ cover, title }: ICoverProps) {
   return (
-    <div className="border-r-4 border-indigo-500">
+    <div className="border-r-4 border-blue-500">
       <img
         src={cover}
         alt={title}

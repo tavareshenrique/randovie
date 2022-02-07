@@ -3,6 +3,7 @@ import { MovieType } from '../../../@types/pages/Home/Movies';
 
 export interface IHomeProps {
   movie: MovieType;
+  movies: MovieType[];
 }
 
 export interface IMovie {
@@ -22,6 +23,11 @@ export interface IMovie {
     }
     Name: {
       title: {
+        plain_text: string
+      }[]
+    },
+    i18n: {
+      rich_text: {
         plain_text: string
       }[]
     }
