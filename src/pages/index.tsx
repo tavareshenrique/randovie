@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { GetServerSideProps } from 'next';
 
-import { BrowserView } from 'react-device-detect';
+import { BrowserView, MobileView } from 'react-device-detect';
 import notion from '../services/notion';
 
 import Container from '../components/Container';
@@ -14,30 +14,46 @@ import { MovieType } from '../@types/pages/Home/Movies';
 import { IHomeProps, IMovie } from '../@interfaces/pages/Home/IHomeProps';
 
 export default function Home({ movie, movies }: IHomeProps) {
+  const timeLoadingRef = useRef(0);
+
   const [movieShown, setMovieShown] = useState<MovieType>(movie);
+  const [loadingMovie, setLoadingMovie] = useState(false);
 
   async function getNewMovie() {
+    setLoadingMovie(true);
+
     const randomNumber = Math.floor(Math.random() * 100) + 1;
 
     setMovieShown(movies[randomNumber]);
+
+    timeLoadingRef.current = window.setTimeout(() => {
+      setLoadingMovie(false);
+    }, 500);
   }
+
+  useEffect(() => {
+    window.clearTimeout(timeLoadingRef.current);
+  }, []);
 
   return (
     <>
       <button
         onClick={getNewMovie}
         type="button"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-8 h-12"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-4 mt-4 h-12 md:ml-8"
       >
         Buscar Novo Filme
       </button>
 
       <Container>
         <BrowserView>
-          <Cover cover={movieShown.cover} title={movieShown.title} />
+          <Cover cover={movieShown.cover} title={movieShown.title} loading={loadingMovie} />
         </BrowserView>
 
         <section className="flex flex-col justify-center items-center border-separate">
+          <MobileView className="m-0">
+            <Cover cover={movieShown.cover} title={movieShown.title} loading={loadingMovie} />
+          </MobileView>
           <Title title={movieShown.title} originalTitle={movieShown.originalTitle} />
           <Duration duration={movieShown.duration} />
           <Platform
@@ -70,11 +86,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 
   const movies = allMovies.map((movieData) => ({
-    title: movieData.properties.Name.title[0].plain_text,
-    cover: movieData.cover.external.url,
-    platforms: movieData.properties['Watch in'].multi_select,
-    duration: movieData.properties.Duração.rich_text[0].plain_text,
-    originalTitle: movieData.properties.i18n.rich_text[0].plain_text,
+    title: movieData.properties.Name.title[0].plain_text || '',
+    cover: movieData.cover.external?.url || '',
+    platforms: movieData.properties['Watch in'].multi_select || [],
+    duration: movieData.properties['Duração'].rich_text[0].plain_text || '',
+    originalTitle: movieData.properties.i18n.rich_text[0].plain_text || '',
   }));
 
   return {
