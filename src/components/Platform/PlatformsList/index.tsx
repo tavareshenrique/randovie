@@ -7,6 +7,7 @@ import hboImg from '../../../../public/hbomax.png';
 import paramountImg from '../../../../public/paramount.jpeg';
 import primeImg from '../../../../public/prime.png';
 import appleImg from '../../../../public/appletv.jpg';
+import telecineGloboplayImg from '../../../../public/telecineGloboplay.png';
 
 import { IPlatformsListProps } from './@interfaces';
 
@@ -26,6 +27,8 @@ export default function PlatformsList({
       'HBO Max': hboImg,
       'Paramount+': paramountImg,
       'AppleTV+': appleImg,
+      'Globoplay / Telecine': telecineGloboplayImg,
+
     };
 
     if (platformToShow[name]) {

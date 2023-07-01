@@ -7,6 +7,8 @@ export type PlatformType = {
 export type MovieType = {
   title: string;
   originalTitle: string;
+  sinopse: string;
+  genre: string[];
   cover: string;
   platforms: PlatformType[],
   duration: string;

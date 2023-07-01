@@ -6,8 +6,8 @@ import styles from './style.module.css';
 
 export default function Platform({ platforms }: IPlatformProps) {
   return (
-    <div className="mt-4 md:ml-8">
-      <h2 className="text-xl text-white text-center">Plataforma(s):</h2>
+    <section className="mt-4 md:ml-8">
+      <h2 className="text-xl text-white text-center font-bold">Plataforma(s):</h2>
       <div className="flex flex-col justify-center items-center mt-2">
         <ul className="flex flex-row justify-center items-center">
           {platforms.length <= 0 ? (
@@ -27,6 +27,6 @@ export default function Platform({ platforms }: IPlatformProps) {
 
         </ul>
       </div>
-    </div>
+    </section>
   );
 }

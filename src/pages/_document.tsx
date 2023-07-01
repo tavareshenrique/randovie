@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" href="/randovie.svg" type="image/svg" />
         </Head>
-        <body>
+        <body className="h-screen bg-gray-800">
           <Main />
           <NextScript />
         </body>

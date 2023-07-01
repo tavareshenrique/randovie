@@ -1,8 +1,10 @@
+import { isMobile } from 'react-device-detect';
+
 import { ICoverProps } from './@interfaces';
 
 function Cover({ cover, title, loading }: ICoverProps) {
   return (
-    <div className="md:mr-8 md:border-r-4 md:border-blue-500 sm:mb-2">
+    <div>
       {loading ? (
         <div className="flex flex-col justify-center items-center">
           <div className="text-center">
@@ -16,12 +18,11 @@ function Cover({ cover, title, loading }: ICoverProps) {
         <img
           src={cover}
           alt={title}
-          height={280}
-          width={280}
-          className="rounded-2xl md:mr-8 "
+          height={isMobile ? 280 : 480}
+          width={isMobile ? 280 : 480}
+          className="rounded-2xl md:mr-86"
         />
       )}
-
     </div>
   );
 }

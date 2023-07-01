@@ -1,6 +1,6 @@
 {
   "name": "randovie",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,32 +9,32 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@notionhq/client": "^0.3.1",
-    "axios": "^0.25.0",
+    "@notionhq/client": "2.2.6",
+    "axios": "0.25.0",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-device-detect": "^2.1.2",
+    "react-device-detect": "2.1.2",
     "react-dom": "17.0.2",
-    "tailwindcss": "^2.2.9"
+    "tailwindcss": "2.2.9"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/react": "^17.0.19",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
-    "autoprefixer": "^10.3.4",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
+    "@types/axios": "0.14.0",
+    "@types/react": "17.0.19",
+    "@typescript-eslint/eslint-plugin": "4.30.0",
+    "@typescript-eslint/parser": "4.30.0",
+    "autoprefixer": "10.3.4",
+    "babel-eslint": "10.1.0",
+    "eslint": "7.32.0",
+    "eslint-config-airbnb": "18.2.1",
     "eslint-config-next": "11.1.2",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.25.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "postcss": "^8.3.6",
-    "prettier": "^2.3.2",
-    "typescript": "^4.4.2"
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.24.2",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-react": "7.25.1",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "postcss": "8.3.6",
+    "prettier": "2.3.2",
+    "typescript": "4.4.2"
   }
 }

@@ -8,15 +8,18 @@ export interface IHomeProps {
 
 export interface IMovie {
   cover: {
-    external: {
+    external?: {
+      url: string;
+    }
+    file?: {
       url: string;
     }
   },
   properties: {
-    'Watch in': {
+    'Watch on': {
       multi_select: string[]
     },
-    'Duração': {
+    'Duration': {
       rich_text: {
         plain_text: string
       }[]
@@ -30,6 +33,14 @@ export interface IMovie {
       rich_text: {
         plain_text: string
       }[]
+    },
+    Sinopse: {
+      rich_text: {
+        plain_text: string
+      }[]
+    },
+    Genre: {
+      multi_select: string[]
     }
   }
 }
