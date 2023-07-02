@@ -1,5 +1,3 @@
-import { isMobile } from 'react-device-detect';
-
 import { ICoverProps } from './@interfaces';
 
 export function Cover({ cover, title, loading }: ICoverProps) {
