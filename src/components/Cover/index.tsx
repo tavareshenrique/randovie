@@ -2,7 +2,7 @@ import { isMobile } from 'react-device-detect';
 
 import { ICoverProps } from './@interfaces';
 
-function Cover({ cover, title, loading }: ICoverProps) {
+export function Cover({ cover, title, loading }: ICoverProps) {
   return (
     <div>
       {loading ? (
@@ -18,13 +18,11 @@ function Cover({ cover, title, loading }: ICoverProps) {
         <img
           src={cover}
           alt={title}
-          height={isMobile ? 280 : 480}
-          width={isMobile ? 280 : 480}
+          height={360}
+          width={360}
           className="rounded-2xl md:mr-86"
         />
       )}
     </div>
   );
 }
-
-export default Cover;

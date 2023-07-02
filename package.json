@@ -1,6 +1,6 @@
 {
   "name": "randovie",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,7 +13,6 @@
     "axios": "0.25.0",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-device-detect": "2.1.2",
     "react-dom": "17.0.2",
     "tailwindcss": "2.2.9"
   },

@@ -3,10 +3,7 @@ import { GetServerSideProps } from 'next';
 
 import notion from '../services/notion';
 
-import Cover from '../components/Cover';
-import Title from '../components/Title';
-import Duration from '../components/Duration';
-import Platform from '../components/Platform';
+import { Cover, Duration, Genres, Platform, Title } from '../components';
 
 import { MovieType } from '../@types/pages/Home/Movies';
 import { IHomeProps, IMovie } from '../@interfaces/pages/Home/IHomeProps';
@@ -30,7 +27,9 @@ export default function Home({ movie, movies }: IHomeProps) {
   }
 
   useEffect(() => {
-    window.clearTimeout(timeLoadingRef.current);
+    return () => {
+      window.clearTimeout(timeLoadingRef.current);
+    }
   }, []);
 
   return (
@@ -50,6 +49,8 @@ export default function Home({ movie, movies }: IHomeProps) {
         originalTitle={movieShown.originalTitle}
         description={movieShown.sinopse}
       />
+
+      <Genres genres={movieShown.genres} />
 
       <Duration duration={movieShown.duration} />
 

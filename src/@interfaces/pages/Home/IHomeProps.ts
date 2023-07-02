@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { MovieType } from '../../../@types/pages/Home/Movies';
+import { MovieType, TGenre } from '../../../@types/pages/Home/Movies';
 
 export interface IHomeProps {
   movie: MovieType;
@@ -40,7 +40,7 @@ export interface IMovie {
       }[]
     },
     Genre: {
-      multi_select: string[]
+      multi_select: TGenre[]
     }
   }
 }
