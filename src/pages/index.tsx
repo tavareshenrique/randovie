@@ -156,5 +156,6 @@ export const getStaticProps: GetStaticProps = async () => {
       movie,
       movies,
     },
+    revalidate: 60 * 60, // 1 hour
   };
 };
