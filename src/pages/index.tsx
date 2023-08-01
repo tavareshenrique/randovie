@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { GetServerSideProps } from 'next';
+import Link from 'next/link';
 
 import Lottie from 'lottie-react';
 
@@ -43,7 +44,17 @@ export default function Home({ movie, movies }: IHomeProps) {
   }, []);
 
   return (
-    <main className="flex flex-col items-center justify-center ">
+    <main className="flex flex-col items-center justify-center">
+      <li className="absolute top-0 right-0 mt-4 mr-4 list-none">
+        <ul className="flex flex-row gap-4 text-white">
+          <Link href="/sobre" passHref>
+            <a className="text-xl font-bold text-center text-zinc-200 hover:text-blue-500">
+              Sobre
+            </a>
+          </Link>
+        </ul>
+      </li>
+
       <button
         onClick={getNewMovie}
         type="button"
