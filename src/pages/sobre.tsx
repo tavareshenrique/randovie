@@ -1,25 +1,21 @@
 import { GetStaticProps } from 'next';
-import Link from 'next/link';
+
+import { House } from 'phosphor-react';
+
+import { Navigation } from '../components';
 
 export default function Sobre() {
   return (
-    // alling bellow div in center with space in right and left
-    <main className="flex flex-col items-center justify-center w-full gap-10 px-80 py-80">
-      <li className="absolute top-0 right-0 mt-4 mr-4 list-none">
-        <ul className="flex flex-row gap-4 text-white">
-          <Link href="/" passHref>
-            <a className="text-xl font-bold text-center text-zinc-200 hover:text-blue-500">
-              Home
-            </a>
-          </Link>
-        </ul>
-      </li>
+    <main className="flex flex-col items-center justify-center w-full gap-10 px-80 py-80 sm:px-10 sm:py-40">
+      <Navigation to="/">
+        <House size={40} />
+      </Navigation>
 
-      <h1 className="text-5xl font-bold text-center text-zinc-200">
+      <h1 className="text-5xl font-bold text-center sm:text-2xl text-zinc-200">
         O que é o Randovie? 🎬
       </h1>
 
-      <p className="text-lg leading-8 text-center text-gray-100 whitespace-break-spaces">
+      <p className="text-lg leading-8 text-center text-gray-100 sm:leading-9 sm:text-base whitespace-break-spaces">
         O <b>Randovie</b> é um projeto open source onde ele consome a API do
         Notion para buscar filmes aleatórios. {'\n'}O projeto foi criado para
         ser um exemplo de como consumir a API do Notion usando Next.js e

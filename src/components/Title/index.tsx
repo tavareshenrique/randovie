@@ -7,7 +7,9 @@ export function Title({ title, originalTitle, description }: ITitleProps) {
         {title}
       </h1>
 
-      <h2 className="mt-2 text-lg font-bold text-center text-gray-400">{originalTitle}</h2>
+      <h2 className="mt-2 text-lg font-bold text-center text-gray-400">
+        {originalTitle}
+      </h2>
 
       <p className="mt-2 leading-6 text-center text-gray-50">{description}</p>
     </section>

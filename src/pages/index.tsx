@@ -4,9 +4,18 @@ import Link from 'next/link';
 
 import Lottie from 'lottie-react';
 
+import { Info } from 'phosphor-react';
+
 import notion from '../services/notion';
 
-import { Cover, Duration, Genres, Platform, Title } from '../components';
+import {
+  Cover,
+  Duration,
+  Genres,
+  Navigation,
+  Platform,
+  Title,
+} from '../components';
 
 import movieLoadingLottier from '../assets/lottie/movie-loading.json';
 
@@ -45,15 +54,9 @@ export default function Home({ movie, movies }: IHomeProps) {
 
   return (
     <main className="flex flex-col items-center justify-center">
-      <li className="absolute top-0 right-0 mt-4 mr-4 list-none">
-        <ul className="flex flex-row gap-4 text-white">
-          <Link href="/sobre" passHref>
-            <a className="text-xl font-bold text-center text-zinc-200 hover:text-blue-500">
-              Sobre
-            </a>
-          </Link>
-        </ul>
-      </li>
+      <Navigation to="/sobre">
+        <Info size={40} />
+      </Navigation>
 
       <button
         onClick={getNewMovie}

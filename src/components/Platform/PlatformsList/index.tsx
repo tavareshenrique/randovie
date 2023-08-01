@@ -13,9 +13,7 @@ import { IPlatformsListProps } from './@interfaces';
 
 import styles from '../style.module.css';
 
-export default function PlatformsList({
-  platform,
-}: IPlatformsListProps) {
+export default function PlatformsList({ platform }: IPlatformsListProps) {
   function RenderComponent() {
     const { name } = platform;
 
@@ -28,7 +26,6 @@ export default function PlatformsList({
       'Paramount+': paramountImg,
       'AppleTV+': appleImg,
       'Globoplay / Telecine': telecineGloboplayImg,
-
     };
 
     if (platformToShow[name]) {
@@ -41,7 +38,7 @@ export default function PlatformsList({
             width="64"
             className="rounded-2xl"
           />
-          <span className="text-white text-sm">{name}</span>
+          <span className="text-sm text-white">{name}</span>
         </li>
       );
     }
@@ -53,7 +50,5 @@ export default function PlatformsList({
     );
   }
 
-  return (
-    <RenderComponent />
-  );
+  return <RenderComponent />;
 }

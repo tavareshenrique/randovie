@@ -3,8 +3,8 @@ import React from 'react';
 interface IGenreProps {
   genres: {
     id: string;
-    name: string,
-  }[]
+    name: string;
+  }[];
 }
 
 export function Genres({ genres }: IGenreProps) {
@@ -25,7 +25,7 @@ export function Genres({ genres }: IGenreProps) {
   }
 
   return (
-    <div className="flex flex-row flex-wrap justify-center items-center mt-4">
+    <div className="flex flex-row flex-wrap items-center justify-center mt-4">
       {genres.map((genre) => (
         <span
           key={genre.id}
