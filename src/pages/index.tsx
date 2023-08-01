@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 
 import Lottie from 'lottie-react';
 
@@ -106,7 +106,7 @@ export default function Home({ movie, movies }: IHomeProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   let response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID,
     page_size: 100,
