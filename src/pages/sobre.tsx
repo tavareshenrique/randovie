@@ -26,6 +26,9 @@ export default function Sobre() {
         >
           Randovie
         </a>
+        {'\n'} Os filmes exibidos são alguns filmes que eu tenho interesse de
+        assistir algum dia, tem ótimos filmes e péssimos filmes, então
+        divirta-se.
         {'\n'}Caso queira ver a lista de filmes no Notion:{' '}
         <a
           href="https://henriquetavares.notion.site/783712d0042f4e9a9dd32104ccc9a2a9?v=768e151966094d428cd2183b91a98131&pvs=4"
