@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { GetServerSideProps } from 'next';
-import Link from 'next/link';
 
 import Lottie from 'lottie-react';
 
