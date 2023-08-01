@@ -1,12 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import { GetServerSideProps } from 'next';
 
+import Lottie from 'lottie-react';
+
 import notion from '../services/notion';
 
 import { Cover, Duration, Genres, Platform, Title } from '../components';
 
+import movieLoadingLottier from '../assets/lottie/movie-loading.json';
+
 import { MovieType } from '../@types/pages/Home/Movies';
 import { IHomeProps, IMovie } from '../@interfaces/pages/Home/IHomeProps';
+import {
+  PageObjectResponse,
+  PartialPageObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints';
 
 export default function Home({ movie, movies }: IHomeProps) {
   const timeLoadingRef = useRef(0);
@@ -14,66 +22,106 @@ export default function Home({ movie, movies }: IHomeProps) {
   const [movieShown, setMovieShown] = useState<MovieType>(movie);
   const [loadingMovie, setLoadingMovie] = useState(false);
 
+  const totalMovies = movies.length;
+
   async function getNewMovie() {
     setLoadingMovie(true);
 
-    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    const randomNumber = Math.floor(Math.random() * totalMovies) + 1;
 
     setMovieShown(movies[randomNumber]);
 
     timeLoadingRef.current = window.setTimeout(() => {
       setLoadingMovie(false);
-    }, 500);
+    }, 1500);
   }
 
   useEffect(() => {
     return () => {
       window.clearTimeout(timeLoadingRef.current);
-    }
+    };
   }, []);
 
   return (
-    <main className="flex flex-col justify-center items-center">
+    <main className="flex flex-col items-center justify-center ">
       <button
         onClick={getNewMovie}
         type="button"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-4 h-12 md:ml-8 mt-16"
+        disabled={loadingMovie}
+        className="h-12 px-4 py-2 mt-16 mb-4 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Buscar Novo Filme
       </button>
 
-      <Cover cover={movieShown.cover} title={movieShown.title} loading={loadingMovie} />
+      {loadingMovie ? (
+        <main className="mt-9">
+          <Lottie
+            animationData={movieLoadingLottier}
+            loop={true}
+            style={{
+              width: 300,
+              height: 300,
+            }}
+          />
 
-      <Title
-        title={movieShown.title}
-        originalTitle={movieShown.originalTitle}
-        description={movieShown.sinopse}
-      />
+          <h1 className="text-2xl font-bold text-center text-white">
+            Carregando...
+          </h1>
+        </main>
+      ) : (
+        <>
+          <Cover
+            cover={movieShown.cover}
+            title={movieShown.title}
+            loading={loadingMovie}
+          />
 
-      <Genres genres={movieShown.genres} />
+          <Title
+            title={movieShown.title}
+            originalTitle={movieShown.originalTitle}
+            description={movieShown.sinopse}
+          />
 
-      <Duration duration={movieShown.duration} />
+          <Genres genres={movieShown.genres} />
 
-      <Platform platforms={movieShown.platforms} />
+          <Duration duration={movieShown.duration} />
+
+          <Platform platforms={movieShown.platforms} />
+        </>
+      )}
     </main>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const randomNumber = Math.floor(Math.random() * 100) + 1;
-
-  const response = await notion.databases.query({
+  let response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID,
+    page_size: 100,
   });
 
-  const randomMovie = response.results[randomNumber] as unknown as IMovie;
+  const result: (PageObjectResponse | PartialPageObjectResponse)[] =
+    response.results;
 
-  const allMovies = response.results as unknown as IMovie[];
+  while (response.has_more) {
+    response = await notion.databases.query({
+      database_id: process.env.NOTION_DATABASE_ID,
+      page_size: 100,
+      start_cursor: response.next_cursor,
+    });
+
+    result.push(...response.results);
+  }
+
+  const totalMovies = result.length;
+  const randomNumber = Math.floor(Math.random() * totalMovies) + 1;
+
+  const randomMovie = result[randomNumber] as unknown as IMovie;
+  const allMovies = result as unknown as IMovie[];
 
   const movie = {
     title: randomMovie.properties.Name.title[0].plain_text,
     originalTitle: randomMovie.properties.i18n.rich_text[0].plain_text,
-    cover: randomMovie.cover.external.url || randomMovie.cover.file.url,
+    cover: randomMovie.cover.file.url,
     sinopse: randomMovie.properties.Sinopse.rich_text[0].plain_text,
     platforms: randomMovie.properties['Watch on'].multi_select,
     duration: randomMovie.properties.Duration.rich_text[0].plain_text,
@@ -83,7 +131,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const movies = allMovies.map((movieData) => ({
     title: movieData.properties.Name.title[0].plain_text,
     originalTitle: movieData.properties.i18n.rich_text[0].plain_text,
-    cover: movieData.cover.external?.url || movieData.cover.file.url,
+    cover: movieData.cover.file.url,
     sinopse: movieData.properties.Sinopse.rich_text[0].plain_text,
     platforms: movieData.properties['Watch on'].multi_select,
     duration: movieData.properties.Duration.rich_text[0].plain_text,
