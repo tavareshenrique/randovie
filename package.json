@@ -1,6 +1,6 @@
 {
   "name": "randovie",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,24 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@notionhq/client": "2.2.6",
-    "axios": "0.25.0",
+    "@notionhq/client": "2.2.10",
+    "axios": "1.4.0",
     "lottie-react": "2.4.0",
-    "next": "11.1.2",
+    "next": "13.4.12",
     "nextjs-toploader": "1.4.2",
     "phosphor-react": "1.4.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sharp": "0.32.4",
     "tailwindcss": "3.3.3"
   },
   "devDependencies": {
     "@types/axios": "0.14.0",
-    "@types/react": "17.0.19",
+    "@types/react": "18.2.18",
     "autoprefixer": "10.4.14",
     "babel-eslint": "10.1.0",
     "eslint": "8.46.0",
     "eslint-config-henrique": "1.1.0",
     "postcss": "8.4.27",
-    "typescript": "4.4.2"
+    "typescript": "5.1.6"
   }
 }

@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { GetStaticProps } from 'next';
 
+import {
+  DatabaseObjectResponse,
+  PageObjectResponse,
+  PartialDatabaseObjectResponse,
+  PartialPageObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints';
+
 import Lottie from 'lottie-react';
 
 import { Info } from 'phosphor-react';
@@ -20,10 +27,6 @@ import movieLoadingLottier from '../assets/lottie/movie-loading.json';
 
 import { MovieType } from '../@types/pages/Home/Movies';
 import { IHomeProps, IMovie } from '../@interfaces/pages/Home/IHomeProps';
-import {
-  PageObjectResponse,
-  PartialPageObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints';
 
 export default function Home({ movie, movies }: IHomeProps) {
   const timeLoadingRef = useRef(0);
@@ -112,8 +115,12 @@ export const getStaticProps: GetStaticProps = async () => {
     page_size: 100,
   });
 
-  const result: (PageObjectResponse | PartialPageObjectResponse)[] =
-    response.results;
+  const result: (
+    | PageObjectResponse
+    | PartialPageObjectResponse
+    | PartialDatabaseObjectResponse
+    | DatabaseObjectResponse
+  )[] = response.results;
 
   while (response.has_more) {
     response = await notion.databases.query({
@@ -156,6 +163,5 @@ export const getStaticProps: GetStaticProps = async () => {
       movie,
       movies,
     },
-    revalidate: 60 * 60, // 1 hour
   };
 };

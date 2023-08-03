@@ -2,12 +2,12 @@ export type PlatformType = {
   id: string;
   name: string;
   color: string;
-}
+};
 
 export type TGenre = {
   id: string;
   name: string;
-}
+};
 
 export type MovieType = {
   title: string;
@@ -15,6 +15,6 @@ export type MovieType = {
   sinopse: string;
   genres: TGenre[];
   cover: string;
-  platforms: PlatformType[],
+  platforms: PlatformType[];
   duration: string;
 };

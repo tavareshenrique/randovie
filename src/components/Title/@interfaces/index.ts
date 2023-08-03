@@ -1,5 +1,5 @@
 export interface ITitleProps {
-  title: string
-  originalTitle: string
-  description: string
+  title: string;
+  originalTitle: string;
+  description: string;
 }

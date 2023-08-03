@@ -1,3 +1,3 @@
 export interface IDurationProps {
-  duration: string
+  duration: string;
 }
