@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 
 import {
   DatabaseObjectResponse,
@@ -109,7 +109,7 @@ export default function Home({ movie, movies }: IHomeProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   let response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID,
     page_size: 100,
